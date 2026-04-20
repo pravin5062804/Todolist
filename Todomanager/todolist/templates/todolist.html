@@ -133,12 +133,49 @@
   .btn-edit:hover { background: #2a2740; }
   .btn-delete:hover { background: #2a1618; }
 </style>
+  
 
 <div class="todo-wrapper">
   <h1>Welcome to <span>{{ page }}</span></h1>
   {% endblock content %}
 
   {% block main %}
+  </nav>
+
+<!-- Add Task Form -->
+<div style="background: #161b22; border-bottom: 1px solid #21262d; padding: 0.75rem 2rem; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+  
+  <span style="color: #8b949e; font-size: 13px; font-weight: 500; margin-right: 4px;">Add Tasks</span>
+
+  <form method="POST" style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+    {% csrf_token %}
+
+    <input 
+      type="text" 
+      name="task" 
+      placeholder="Enter task name..." 
+      required
+      style="background: #0d1117; border: 1px solid #30363d; color: #e6edf3; border-radius: 6px; padding: 8px 14px; font-size: 14px; width: 300px; outline: none; font-family: inherit;"
+      onfocus="this.style.borderColor='#e85d04'; this.style.boxShadow='0 0 0 3px rgba(232,93,4,0.15)';"
+      onblur="this.style.borderColor='#30363d'; this.style.boxShadow='none';"
+    >
+
+    <label style="display: flex; align-items: center; gap: 8px; color: #8b949e; font-size: 13px; cursor: pointer; user-select: none;">
+      <input type="checkbox" name="is_completed" style="accent-color: #e85d04; width: 16px; height: 16px; cursor: pointer;">
+      Mark as completed
+    </label>
+
+    <button 
+      type="submit"
+      style="background: #e85d04; color: white; border: none; border-radius: 6px; padding: 8px 18px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit;"
+      onmouseover="this.style.background='#f97316';"
+      onmouseout="this.style.background='#e85d04';"
+    >
+      Add Task
+    </button>
+
+  </form>
+</div>
   <div class="container">
     <table class="table">
       <thead>
